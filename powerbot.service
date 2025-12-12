@@ -1,0 +1,13 @@
+[Unit]
+Description=Power outage watcher
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=POWERBOT_TOKEN=YOUR_TOKEN
+Environment=POWERBOT_CHAT_ID=YOUR_CHAT_ID
+Environment=POWERBOT_STATE=/var/lib/powerbot/state.json
+# Optional: test mode
+#Environment=POWERBOT_TEST_FILE=/path/to/sample.txt
+ExecStart=/usr/local/bin/powerbot
